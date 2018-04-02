@@ -9,10 +9,21 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 扫描controller(后端控制器),并且扫描其中的注解-->
-    <context:component-scan base-package="com.ay.controller"/>
+    <context:component-scan base-package="com.ay"/>
+
+    <mvc:annotation-driven/>
+
+    <!--配置JSP　显示ViewResolver(视图解析器)-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
 
 </beans>
