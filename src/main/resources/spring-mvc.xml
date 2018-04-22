@@ -14,8 +14,8 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 扫描controller(后端控制器),并且扫描其中的注解-->
-    <context:component-scan base-package="com.ay"/>
-
+    <context:component-scan base-package="com.ay.controller"/>
+    <!--设置配置方案 -->
     <mvc:annotation-driven/>
 
     <!--配置JSP　显示ViewResolver(视图解析器)-->

@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Repository
+@Service
 public class AyUserServiceImpl implements AyUserService{
 
     @Resource
     private AyUserDao ayUserDao;
 
     public List<AyUser> findAll() {
-        return ayUserDao.listAllUser();
+        return ayUserDao.findAll();
     }
 }
