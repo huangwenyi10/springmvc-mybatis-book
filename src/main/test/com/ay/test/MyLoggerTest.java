@@ -1,15 +1,10 @@
 package com.ay.test;
-
-import org.springframework.stereotype.Service;
-
 import java.lang.reflect.Proxy;
-
 /**
  * 描述：测试类
  * @author Ay
  * @create 2018/04/22
  **/
-@Service
 public class MyLoggerTest {
 
     public static void main(String[] args) {
@@ -21,6 +16,5 @@ public class MyLoggerTest {
         BusinessClassService businessClass = (BusinessClassService)Proxy.newProxyInstance(businessClassService.getClass().getClassLoader(), businessClassService.getClass().getInterfaces(),myLoggerHandler);
         //执行代理类方法
         businessClass.doSomeThing();
-
     }
 }

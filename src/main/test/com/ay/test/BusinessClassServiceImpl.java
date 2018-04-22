@@ -1,5 +1,7 @@
 package com.ay.test;
 
+import org.springframework.stereotype.Service;
+
 /**
  * 描述：业务实现类
  * @author Ay

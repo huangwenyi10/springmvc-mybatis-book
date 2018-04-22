@@ -38,4 +38,6 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <property name="basePackage" value="com.ay.dao"/>
     </bean>
+
+
 </beans>
