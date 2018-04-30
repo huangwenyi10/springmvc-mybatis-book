@@ -14,4 +14,50 @@
         from ay_user as a
     </select>
 
+    <select id="findById"  parameterType="String" resultType="com.ay.model.AyUser">
+        SELECT * FROM ay_user
+        WHERE id = #{id}
+    </select>
+
+    <select id="findByName"  parameterType="String" resultType="com.ay.model.AyUser">
+        SELECT * FROM ay_user
+        WHERE name = #{name}
+    </select>
+
+    <select id="countByName"  parameterType="String" resultType="int">
+        SELECT count(*) FROM ay_user
+        WHERE name = #{name}
+    </select>
+
+    <!--<insert id="insert" parameterType="com.ay.model.AyUser">-->
+        <!--INSERT INTO ay_user(id, name, password) VALUE (#{id}, #{name}, #{password});-->
+    <!--</insert>-->
+
+    <!--<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.ay.model.AyUser">-->
+        <!--INSERT INTO ay_user(name, password) VALUE (#{name}, #{password});-->
+     <!--</insert>-->
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.ay.model.AyUser">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT MAX(id) + 1 AS id FROM ay_user
+        </selectKey>
+        INSERT INTO ay_user(id, name, password) VALUE (#{id}, #{name}, #{password});
+    </insert>
+
+    <update id="update" parameterType="com.ay.model.AyUser">
+        UPDATE ay_user SET
+        name = #{name},
+        password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM ay_user
+        WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteByName" parameterType="String">
+        DELETE FROM ay_user
+        WHERE name = #{name}
+    </delete>
 </mapper>

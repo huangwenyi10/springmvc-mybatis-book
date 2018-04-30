@@ -8,6 +8,16 @@ import java.lang.reflect.Proxy;
 public class MyLoggerTest {
 
     public static void main(String[] args) {
+        int i = 1;
+        Integer ii = 1;
+        if(i == ii){
+            System.out.println("111");
+        }
+        float iii = 1;
+        if(iii == ii){
+            System.out.println("12222");
+        }
+
         //实例化真实项目中业务类
         BusinessClassService businessClassService = new BusinessClassServiceImpl();
         //日志类的handler
