@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ay.dao.AyRoleDao">
+
+    <resultMap id="roleMap" type="com.ay.model.AyRole">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+
+        <collection property="ayUserList" javaType="ArrayList" column="id"
+                    ofType="com.ay.model.AyUser"
+                    fetchType="lazy"
+                    select="com.ay.dao.AyUserDao.findByRoleId">
+            <!--<id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>-->
+        </collection>
+
+    </resultMap>
+
+    <select id="findById" parameterType="String" resultMap="roleMap">
+        SELECT * FROM ay_role WHERE id = #{id}
+    </select>
+
+    <select id="findByUserId" parameterType="Integer" resultType="com.ay.model.AyRole">
+        SELECT * FROM ay_role WHERE id in(
+          select role_id from ay_user_role_rel where user_id = #{userId}
+        )
+    </select>
+
+</mapper>

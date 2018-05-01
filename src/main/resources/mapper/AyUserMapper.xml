@@ -2,32 +2,112 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ay.dao.AyUserDao">
-    <sql id="userField">
-        a.id as "id",
-        a.name as "name",
-        a.password as "password"
-    </sql>
+
+    <resultMap id="userMap" type="com.ay.model.AyUser">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <!--<association property="ayUserAddress" column="address_id"-->
+                     <!--select="com.ay.dao.AyUserAddressDao.findById" javaType="com.ay.model.AyUserAddress">-->
+        <!--</association>-->
+
+        <collection property="ayRoleList" javaType="ArrayList" column="id"
+                    ofType="com.ay.model.AyRole"
+                    fetchType="lazy"
+                    select="com.ay.dao.AyRoleDao.findByUserId">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="findById"  parameterType="String" resultMap="userMap">
+      SELECT * FROM ay_user
+      WHERE id = #{id}
+    </select>
+
+    <select id="findByRoleId" parameterType="Integer" resultType="com.ay.model.AyUser">
+        SELECT * FROM ay_user WHERE id in(
+          select user_id from ay_user_role_rel where role_id = #{roleId}
+        )
+    </select>
+
+
+
+    <!--<resultMap id="userMap" type="com.ay.model.AyUser">-->
+        <!--<id property="id" column="id"/>-->
+        <!--<result property="name" column="name"/>-->
+        <!--<result property="password" column="password"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="findAll" resultType="com.ay.model.AyUser">-->
+        <!--select-->
+        <!--<include refid="userField">-->
+            <!--<property name="prefix" value="a"/>-->
+        <!--</include>-->
+        <!--from ay_user a-->
+    <!--</select>-->
+
+    <!--<select id="findAll" resultMap="userMap">-->
+        <!--select-->
+        <!--<include refid="userField">-->
+            <!--<property name="prefix" value="a"/>-->
+        <!--</include>-->
+        <!--from ay_user a-->
+    <!--</select>-->
+
+    <!--<sql id="userField">-->
+        <!--a.id as "id",-->
+        <!--a.name as "name",-->
+        <!--a.password as "password"-->
+    <!--</sql>-->
+
+    <!--<sql id="userField">-->
+        <!--${prefix}.id as "id",-->
+        <!--${prefix}.name as "name",-->
+        <!--${prefix}.password as "password"-->
+    <!--</sql>-->
+
     <!-- 获取所有用户 -->
-    <select id="findAll" resultType="com.ay.model.AyUser">
-        select
-        <include refid="userField"/>
-        from ay_user as a
-    </select>
+    <!--<select id="findAll" resultType="com.ay.model.AyUser">-->
+        <!--select-->
+        <!--<include refid="userField">-->
+            <!--<property name="prefix" value="a"/>-->
+        <!--</include>-->
+        <!--from ay_user a-->
+    <!--</select>-->
 
-    <select id="findById"  parameterType="String" resultType="com.ay.model.AyUser">
-        SELECT * FROM ay_user
-        WHERE id = #{id}
-    </select>
+    <!--<select id="findById"  parameterType="String" resultType="com.ay.model.AyUser">-->
+        <!--SELECT <include refid="userField"></include>-->
+        <!--FROM ay_user a-->
+        <!--WHERE id = #{id}-->
+    <!--</select>-->
 
-    <select id="findByName"  parameterType="String" resultType="com.ay.model.AyUser">
-        SELECT * FROM ay_user
-        WHERE name = #{name}
-    </select>
+    <!--<select id="findByName"  parameterType="String" resultType="com.ay.model.AyUser">-->
+        <!--SELECT * FROM ay_user-->
+        <!--WHERE name = #{name}-->
+    <!--</select>-->
 
-    <select id="countByName"  parameterType="String" resultType="int">
-        SELECT count(*) FROM ay_user
-        WHERE name = #{name}
-    </select>
+    <!--<select id="findByName"  parameterType="String" resultType="com.ay.model.AyUser">-->
+        <!--SELECT * FROM ay_user WHERE 1 = 1-->
+        <!--<if test="name != null and name != ''">-->
+            <!--and name = #{name}-->
+        <!--</if>-->
+    <!--</select>-->
+
+    <!--<select id="findByName"  parameterType="String" resultType="com.ay.model.AyUser">-->
+        <!--SELECT * FROM ay_user-->
+        <!--<where>-->
+            <!--<if test="name != null and name != ''">-->
+                <!--and name = #{name}-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
+    <!--<select id="countByName"  parameterType="String" resultType="int">-->
+        <!--SELECT count(*) FROM ay_user-->
+        <!--WHERE name = #{name}-->
+    <!--</select>-->
 
     <!--<insert id="insert" parameterType="com.ay.model.AyUser">-->
         <!--INSERT INTO ay_user(id, name, password) VALUE (#{id}, #{name}, #{password});-->
@@ -37,27 +117,124 @@
         <!--INSERT INTO ay_user(name, password) VALUE (#{name}, #{password});-->
      <!--</insert>-->
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.ay.model.AyUser">
-        <selectKey keyProperty="id" resultType="int" order="BEFORE">
-            SELECT MAX(id) + 1 AS id FROM ay_user
-        </selectKey>
-        INSERT INTO ay_user(id, name, password) VALUE (#{id}, #{name}, #{password});
-    </insert>
+    <!--<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.ay.model.AyUser">-->
+        <!--<selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+            <!--SELECT MAX(id) + 1 AS id FROM ay_user-->
+        <!--</selectKey>-->
+        <!--INSERT INTO ay_user(id, name, password) VALUE (#{id}, #{name}, #{password});-->
+    <!--</insert>-->
 
-    <update id="update" parameterType="com.ay.model.AyUser">
-        UPDATE ay_user SET
-        name = #{name},
-        password = #{password}
-        WHERE id = #{id}
-    </update>
+    <!--<update id="update" parameterType="com.ay.model.AyUser">-->
+        <!--UPDATE ay_user SET-->
+        <!--name = #{name},-->
+        <!--password = #{password}-->
+        <!--WHERE id = #{id}-->
+    <!--</update>-->
 
-    <delete id="delete" parameterType="int">
-        DELETE FROM ay_user
-        WHERE id = #{id}
-    </delete>
+    <!--<update id="update" parameterType="com.ay.model.AyUser">-->
+        <!--UPDATE ay_user-->
+        <!--<set>-->
+            <!--<if test="name != null and name != ''">-->
+                <!--name = #{name},-->
+            <!--</if>-->
+            <!--<if test="password != null and password != ''">-->
+                <!--password = #{password},-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--WHERE id = #{id}-->
+    <!--</update>-->
 
-    <delete id="deleteByName" parameterType="String">
-        DELETE FROM ay_user
-        WHERE name = #{name}
-    </delete>
+    <!--<update id="update" parameterType="com.ay.model.AyUser">-->
+        <!--UPDATE ay_user-->
+        <!--<trim prefix="SET" suffixOverrides=",">-->
+            <!--<if test="name != null and name != ''">-->
+                <!--name = #{name},-->
+            <!--</if>-->
+            <!--<if test="password != null and password != ''">-->
+                <!--password = #{password},-->
+            <!--</if>-->
+        <!--</trim>-->
+        <!--WHERE id = #{id}-->
+    <!--</update>-->
+
+
+    <!--<delete id="delete" parameterType="int">-->
+        <!--DELETE FROM ay_user-->
+        <!--WHERE id = #{id}-->
+    <!--</delete>-->
+
+    <!--<delete id="deleteByName" parameterType="String">-->
+        <!--DELETE FROM ay_user-->
+        <!--WHERE name = #{name}-->
+    <!--</delete>-->
+
+    <!--<select id="findByNameAndPassword" parameterType="String" resultMap="userMap">-->
+    <!--SELECT-->
+    <!--<include refid="userField"></include>-->
+    <!--from ay_user a-->
+    <!--WHERE 1 = 1-->
+    <!--<if test="name != null and name != ''">-->
+    <!--and name = #{name}-->
+    <!--</if>-->
+    <!--<if test="password != null and password != ''">-->
+    <!--and password = #{password}-->
+    <!--</if>-->
+    <!--</select>-->
+
+    <!--<select id="findByNameAndPassword" parameterType="String" resultMap="userMap">-->
+        <!--SELECT * from ay_user a-->
+        <!--WHERE 1 = 1 AND name = #{param1} AND password = #{param2}-->
+    <!--</select>-->
+
+    <!--<select id="findByNameAndPassword" parameterType="String" resultType="com.ay.model.AyUser">-->
+        <!--<bind name="name_pattern" value="'%' + name + '%'"/>-->
+        <!--<bind name="password_pattern" value="'%' + password + '%'"/>-->
+        <!--SELECT * FROM ay_user-->
+        <!--<where>-->
+            <!--<if test="name != null and name != ''">-->
+                <!--and name LIKE #{name_pattern}-->
+            <!--</if>-->
+            <!--<if test="password != null and password != ''">-->
+                <!--and password LIKE #{password_pattern}-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
+    <!--<select id="findByNameAndPassword" parameterType="String" resultMap="userMap">-->
+      <!--SELECT-->
+      <!--<include refid="userField"></include>-->
+      <!--from ay_user a-->
+      <!--WHERE 1 = 1-->
+      <!--<choose>-->
+          <!--<when test="name != null and name != ''">-->
+              <!--and name = #{name}-->
+          <!--</when>-->
+          <!--<when test="password != null and password != ''">-->
+              <!--and password = #{password}-->
+          <!--</when>-->
+      <!--</choose>-->
+    <!--</select>-->
+
+    <!--<select id="findByNameAndPassword" parameterType="String" resultMap="userMap">-->
+        <!--SELECT-->
+          <!--<include refid="userField"></include>-->
+        <!--from ay_user a-->
+        <!--<trim prefix="WHERE"  prefixOverrides="AND">-->
+            <!--<if test="name != null and name != ''">-->
+                <!--and name = #{name}-->
+            <!--</if>-->
+            <!--<if test="password != null and password != ''">-->
+                <!--and password = #{password}-->
+            <!--</if>-->
+        <!--</trim>-->
+    <!--</select>-->
+
+    <!--<select id="findByIds" resultType="com.ay.model.AyUser">-->
+        <!--SELECT * FROM ay_user-->
+        <!--WHERE id in-->
+        <!--<foreach item="item" index="index" collection="list"-->
+                 <!--open="(" separator="," close=")">-->
+            <!--#{item}-->
+        <!--</foreach>-->
+    <!--</select>-->
 </mapper>

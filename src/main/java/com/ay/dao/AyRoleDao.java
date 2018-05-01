@@ -1,15 +1,13 @@
 package com.ay.dao;
 
+import com.ay.model.AyRole;
 import com.ay.model.AyUser;
-import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-import java.util.List;
-import java.util.Map;
 
 @Repository
-public interface AyUserDao {
+public interface AyRoleDao {
 
-      AyUser findById(String id);
+      AyRole findById(String id);
 //    @Select("SELECT * FROM ay_user")
 //    List<AyUser> findAll();
 //    @Select("SELECT * FROM ay_user")
@@ -21,8 +19,8 @@ public interface AyUserDao {
 //    List<AyUser> findAll();
 
 //    @Select("SELECT * FROM ay_user WHERE id = #{id}")
+      //AyRole findById(String id);
 //
-
 //    @Select("SELECT * FROM ay_user WHERE name = #{name}")
 //    List<AyUser> findByName(String name);
 //
