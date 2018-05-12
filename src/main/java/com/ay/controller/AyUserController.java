@@ -1,18 +1,17 @@
 package com.ay.controller;
 import com.ay.model.AyUser;
 import com.ay.service.AyUserService;
+import org.apache.ibatis.session.RowBounds;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
+ * 用户控制层
  *@author Ay
  * @date 2018/04/02
  */
@@ -20,15 +19,149 @@ import java.util.Map;
 @RequestMapping(value = "/user")
 public class AyUserController {
 
+
+    @GetMapping("/findById/{id}")
+    public String findById(@PathVariable String id) {
+        // ...
+        return "";
+    }
+
+    @PostMapping(path = "/add")
+    public String add(@RequestBody AyUser ayUser) {
+        // ...
+        return "";
+    }
+
+
+
+//    @RequestMapping("/cookieValue")
+//    public String handle(@CookieValue("JSESSIONID") String cookie) {
+//        //...
+//        return "";
+//    }
+
+//    @RequestMapping("/requestHeader")
+//    public String handle(
+//            @RequestHeader("Accept-Encoding") String[] encoding,
+//            @RequestHeader("Accept") String[] accept) {
+//        //...
+//       return "";
+//    }
+
+//    @RequestMapping("/pets/{petId}")
+//    public String findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
+//        // ...
+//        return "";
+//    }
+
+
+//    @RequestMapping("/findByNameAndPassword")
+//    public String findByNameAndPassword(
+//                        @RequestParam(value="name") String name,
+//                        @RequestParam(value="password",required = false,defaultValue = "123") String password){
+//        System.out.println("name=" + name);
+//        System.out.println("password" + password);
+//        return "success";
+//    }
+
     @Resource
     private AyUserService ayUserService;
 
-    @GetMapping("/findById")
-    public String findById(Model model){
-        AyUser ayUser = ayUserService.findById("1");
-        return "success";
-    }
+    //    @RequestMapping("findById")
+//    public String findById(@RequestParam(value="id") String id){
+//        AyUser ayUser = ayUserService.findById(id);
+//        return "success";
+//    }
 
+//    @RequestMapping(value = "/fetch", params = {
+//            "personId=10"
+//    })
+//    public String getParams(@RequestParam("personId") String id) {
+//        return "Fetched parameter using params attribute = " + id;
+//    }
+//    @RequestMapping(value = "/fetch", params = {
+//            "personId=20"
+//    })
+//    public String getParamsDifferent(@RequestParam("personId") String id) {
+//        return "Fetched parameter using params attribute = " + id;
+//    }
+
+//    @RequestMapping(value = "/head", headers = {
+//            "content-type=text/plain",
+//            "content-type=text/html"
+//    }) String post() {
+//        return "Mapping applied along with headers";
+//    }
+
+//    @RequestMapping(value = "/head", headers = {
+//            "content-type=text/plain"
+//    })
+//    String post() {
+//        return "Mapping applied along with headers";
+//    }
+
+
+//    @RequestMapping(value = "/produces", produces = {
+//            "application/JSON"
+//    })
+//    @ResponseBody
+//    String getProduces() {
+//        return "Produces attribute";
+//    }
+//
+//    @RequestMapping(value = "/consumes", consumes = {
+//            "application/JSON",
+//            "application/XML"
+//    })
+//    String getConsumes() {
+//        return "Consumes attribute";
+//    }
+
+//    @RequestMapping(method = RequestMethod.GET)
+//    String get() {
+//        return "Hello from get";
+//    }
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    String delete() {
+//        return "Hello from delete";
+//    }
+//    @RequestMapping(method = RequestMethod.POST)
+//    String post() {
+//        return "Hello from post";
+//    }
+//    @RequestMapping(method = RequestMethod.PUT)
+//    String put() {
+//        return "Hello from put";
+//    }
+//    @RequestMapping(method = RequestMethod.PATCH)
+//    String patch() {
+//        return "Hello from patch";
+//    }
+//
+//    @RequestMapping(value = {
+//            "",
+//            "/page",
+//            "page*",
+//            "view/*,**/msg"
+//    })
+//    public String hello(Model model){
+//        model.addAttribute("message", "hello ay");
+//        return "hello";
+//    }
+//    @RequestMapping("/hello")
+//    public String hello(Model model){
+//        model.addAttribute("message", "hello ay");
+//        return "hello";
+//    }
+
+
+
+//    @GetMapping("/findById")
+//    public String findById(Model model){
+//        AyUser ayUser = ayUserService.findById("1");
+//        return "success";
+//    }
+//
 //    @GetMapping("/findAll")
 //    public String findAll(Model model){
 //        List<AyUser> ayUserList = ayUserService.findAll();

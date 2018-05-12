@@ -3,6 +3,7 @@ package com.ay.service.impl;
 import com.ay.dao.AyUserDao;
 import com.ay.model.AyUser;
 import com.ay.service.AyUserService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,9 @@ public class AyUserServiceImpl implements AyUserService{
     @Resource
     private AyUserDao ayUserDao;
 
-
-
-//    public List<AyUser> findAll() {
-//        return ayUserDao.findAll();
-//    }
+    public List<AyUser> findAll() {
+        return ayUserDao.findAll();
+    }
 //
     public AyUser findById(String id) {
         return ayUserDao.findById(id);

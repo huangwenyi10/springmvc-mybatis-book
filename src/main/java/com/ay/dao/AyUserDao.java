@@ -2,6 +2,7 @@ package com.ay.dao;
 
 import com.ay.model.AyUser;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public interface AyUserDao {
 //            @Result(column = "name",property = "name"),
 //            @Result(column = "password",property = "password")
 //    })
-//    List<AyUser> findAll();
+    List<AyUser> findAll();
 
 //    @Select("SELECT * FROM ay_user WHERE id = #{id}")
 //

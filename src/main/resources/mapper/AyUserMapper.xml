@@ -32,7 +32,17 @@
         )
     </select>
 
+    <sql id="userField">
+        a.id as "id",
+        a.name as "name",
+        a.password as "password"
+    </sql>
 
+    <select id="findAll" resultMap="userMap">
+      select
+        <include refid="userField"/>
+      from ay_user a
+    </select>
 
     <!--<resultMap id="userMap" type="com.ay.model.AyUser">-->
         <!--<id property="id" column="id"/>-->
