@@ -1,14 +1,24 @@
 package com.ay.controller;
+import com.ay.model.AyRole;
 import com.ay.model.AyUser;
 import com.ay.service.AyUserService;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户控制层
@@ -16,21 +26,149 @@ import java.util.List;
  * @date 2018/04/02
  */
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping("/user")
 public class AyUserController {
 
-
-    @GetMapping("/findById/{id}")
-    public String findById(@PathVariable String id) {
-        // ...
-        return "";
+    @RequestMapping("/hello")
+    @ResponseBody
+    public List<String> hello(){
+        List<String> list = new ArrayList<String>();
+        list.add("ay");
+        list.add("al");
+        return list;
     }
 
-    @PostMapping(path = "/add")
-    public String add(@RequestBody AyUser ayUser) {
-        // ...
-        return "";
-    }
+//    @RequestMapping("hello")
+//    public ModelAndView hello(HttpMethod method){
+//        ModelAndView mv = new ModelAndView();
+//        mv.addObject("name","ay");
+//        mv.setViewName("hello");
+//        return mv;
+//    }
+
+
+//    @RequestMapping("hello")
+//    public ModelAndView hello(HttpServletRequest request){
+//        ModelAndView mv = new ModelAndView();
+//        mv.addObject("name","ay");
+//        mv.setViewName("hello");
+//        return mv;
+//    }
+
+//    @RequestMapping("hello")
+//    public String hello(Model model){
+//        model.addAttribute("name", "ay");
+//        return "hello";
+//    }
+
+//    @ModelAttribute
+//    public void redirectTest(Model model){
+//        model.addAttribute("name","ay");
+//    }
+//
+//    @RequestMapping("hello")
+//    public String hello(Model model, ModelMap modelMap, Map map){
+//        return "hello";
+//    }
+
+//    @RequestMapping("redirect")
+//    public String redirectTest(Model model,SessionStatus sessionStatus){
+//        AyUser ayUser = new AyUser();
+//        ayUser.setName("ay");
+//        model.addAttribute("ayUser",ayUser);
+//        sessionStatus.setComplete();
+//        return "redirect:hello";
+//    }
+//
+//    @RequestMapping("hello")
+//    public String hello(@SessionAttribute AyUser ayUser){
+//        System.out.println(ayUser.getName());
+//        return "hello";
+//    }
+
+//    @RequestMapping("hello")
+//    public String hello(ModelMap modelMap){
+//        AyUser ayUser = (AyUser) modelMap.get("ayUser");
+//        System.out.println(ayUser.getName());
+//        return "hello";
+//    }
+
+//    @ModelAttribute("ayUser")
+//    public AyUser init(@RequestParam("id") Integer id,
+//                       @RequestParam("name") String name){
+//        AyUser ayUser = new AyUser();
+//        ayUser.setId(id);
+//        ayUser.setName(name);
+//        return ayUser;
+//    }
+//
+//    @RequestMapping(value="hello")
+//    public String hello(@ModelAttribute("ayUser") AyUser ayUser){
+//
+//        return "hello";
+//    }
+
+//    @ModelAttribute("name")
+//    @RequestMapping(value = "/hello")
+//    public String hello(){
+//        return "ay";
+//    }
+
+//    @ModelAttribute("name")
+//    public String init(@RequestParam(value = "name", required = false) String name){
+//        return name;
+//    }
+//
+//    @GetMapping("/hello")
+//    public String hello(){
+//        return "hello";
+//    }
+
+//    @ModelAttribute()
+//    public void init(Model model){
+//        AyUser ayUser = new AyUser();
+//        ayUser.setId(1);
+//        ayUser.setName("ay");
+//        model.addAttribute("user", ayUser);
+//    }
+//
+//    @GetMapping("/hello")
+//    public String hello(){
+//        return "hello";
+//    }
+
+//    @ModelAttribute
+//    public void init(){
+//        System.out.println("init ...");
+//    }
+//
+//    @ModelAttribute
+//    public void init02(){
+//        System.out.println("init 02 ...");
+//    }
+//
+//    @GetMapping("/findById/{id}")
+//    public String findById(@PathVariable String id) {
+//        // ...
+//        return "";
+//    }
+//
+//    @ModelAttribute
+//    public void init03(){
+//        System.out.println("init 03 ...");
+//    }
+
+//    @GetMapping("/findById/{id}")
+//    public String findById(@PathVariable String id) {
+//        // ...
+//        return "";
+//    }
+
+//    @PostMapping(path = "/add")
+//    public String add(@RequestBody AyUser ayUser) {
+//        // ...
+//        return "";
+//    }
 
 
 
