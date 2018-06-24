@@ -4,8 +4,14 @@ import com.ay.model.AyUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
 import org.junit.Test;
+import org.mybatis.spring.SqlSessionFactoryBean;
+
 import javax.annotation.Resource;
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -35,4 +41,30 @@ public class AyUserDaoTest extends BaseJunit4Test{
         //用PageInfo对结果进行包装
         PageInfo pageInfo = new PageInfo(userList);
     }
+
+    @Resource
+    private SqlSessionFactoryBean sqlSessionFactoryBean;
+
+    @Test
+    public void testSessionCache() throws Exception{ SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AyUserDao ayUserDao = sqlSession.getMapper(AyUserDao.class);
+        //第一次查询
+        AyUser ayUser = ayUserDao.findById("1");
+        System.out.println("name: " + ayUser.getName()
+                      + "  password:" + ayUser.getPassword());
+
+        //执行commit操作（如：更新、插入、删除等操作）
+        AyUser user = new AyUser();
+        user.setId(1);
+        user.setName("al");
+        ayUserDao.update(ayUser);
+
+        //第二次查询
+        AyUser ayUser2 = ayUserDao.findById("1");
+        System.out.println("name: " + ayUser2.getName()
+                + "  password:" + ayUser2.getPassword());
+        sqlSession.close();;
+    }
+
 }

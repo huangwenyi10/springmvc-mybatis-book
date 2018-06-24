@@ -1,24 +1,17 @@
 package com.ay.controller;
-import com.ay.model.AyRole;
 import com.ay.model.AyUser;
 import com.ay.service.AyUserService;
-import org.apache.ibatis.session.RowBounds;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import com.ay.validator.AyUserValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashMap;
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 用户控制层
@@ -29,14 +22,71 @@ import java.util.Map;
 @RequestMapping("/user")
 public class AyUserController {
 
-    @RequestMapping("/hello")
-    @ResponseBody
-    public List<String> hello(){
-        List<String> list = new ArrayList<String>();
-        list.add("ay");
-        list.add("al");
-        return list;
+    @RequestMapping("/save")
+    public String save(){
+        return "saveUser";
     }
+
+    @PostMapping("/insert")
+    public String insert(@Valid @ModelAttribute AyUser ayUser, BindingResult result){
+        if(result.hasErrors()){
+            return "error";
+        }
+        int count = ayUserService.insert(ayUser);
+        return "success";
+    }
+
+
+//    @Resource
+//    private AyUserValidator ayUserValidator;
+
+//    @RequestMapping("/save")
+//    public String save(){
+//        return "saveUser";
+//    }
+
+//    @PostMapping("/insert")
+//    public String insert(@ModelAttribute AyUser ayUser,Model model, Errors errors){
+//        ayUserValidator.validate(ayUser, errors);
+//        if(errors.hasErrors()){
+//            model.addAttribute("errors", errors);
+//            return "error";
+//        }
+//        int count = ayUserService.insert(ayUser);
+//        return "hello";
+//    }
+
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public void hello(@RequestBody  AyUser ayUser){
+//        System.out.println("name" + ayUser.getName());
+//        System.out.println("password" + ayUser.getPassword());
+//    }
+
+
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public Map<String, String> hello(){
+//        Map<String,String> map = new HashMap<String, String>();
+//        map.put("name", "ay");
+//        map.put("age", "3");
+//        return map;
+//    }
+
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public List<String> hello(){
+//        List<String> list = new ArrayList<String>();
+//        list.add("ay");
+//        list.add("al");
+//        return list;
+//    }
+
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public String hello(){
+//        return "I am not view";
+//    }
 
 //    @RequestMapping("hello")
 //    public ModelAndView hello(HttpMethod method){
@@ -348,15 +398,15 @@ public class AyUserController {
 ////        return "success";
 ////    }
 ////
-////    @GetMapping("/update")
-////    public String update(Model model){
-////        AyUser ayUser = new AyUser();
-////        ayUser.setId(4);
-////        ayUser.setName("al");
-////        ayUser.setPassword("123");
-////        int count = ayUserService.update(ayUser);
-////        return "success";
-////    }
+    @GetMapping("/update")
+    public String update(Model model){
+        AyUser ayUser = new AyUser();
+        ayUser.setId(1);
+        ayUser.setName("aaaa");
+        ayUser.setPassword("123");
+        int count = ayUserService.update(ayUser);
+        return "success";
+    }
 ////
 ////    @GetMapping("/delete")
 ////    public String delete(Model model){

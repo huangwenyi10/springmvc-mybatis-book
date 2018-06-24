@@ -10,6 +10,10 @@ import java.util.Map;
 @Repository
 public interface AyUserDao {
 
+    @Insert("INSERT INTO ay_user(name,password,age) VALUES(#{name}, #{password}, #{age})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    int insert(AyUser ayUser);
+
       AyUser findById(String id);
 //    @Select("SELECT * FROM ay_user")
 //    List<AyUser> findAll();
@@ -33,8 +37,8 @@ public interface AyUserDao {
 //    @Options(useGeneratedKeys = true, keyProperty = "id")
 //    int insert(AyUser ayUser);
 //
-//    @Update("UPDATE  ay_user SET name = #{name}, password = #{password} WHERE id = #{id}")
-//    int update(AyUser ayUser);
+    @Update("UPDATE  ay_user SET name = #{name}, password = #{password} WHERE id = #{id}")
+    int update(AyUser ayUser);
 //
 //    @Delete("DELETE FROM ay_user WHERE id = #{id}")
 //    int delete(int id);

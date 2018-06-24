@@ -1,4 +1,8 @@
 package com.ay.model;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,9 +14,13 @@ import java.util.List;
 public class AyUser implements Serializable{
 
     private Integer id;
+    @NotBlank(message = "name不能为空")
     private String name;
+    @Length(min = 3, max = 16, message = "密码长度必须在3~16位之间")
     private String password;
+    @Range(min = 0, max = 150, message = "年龄必须在0~150岁之间")
     private Integer age;
+
     //用户和地址一一对应，即一个用户只有一个老家地址
     private AyUserAddress ayUserAddress;
 

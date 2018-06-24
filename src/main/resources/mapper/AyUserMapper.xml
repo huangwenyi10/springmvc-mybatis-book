@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ay.dao.AyUserDao">
-
+<!-- 开启AyUserMapper的namespace下的二级缓存 -->
+<cache/>
     <resultMap id="userMap" type="com.ay.model.AyUser">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
@@ -11,17 +12,17 @@
                      <!--select="com.ay.dao.AyUserAddressDao.findById" javaType="com.ay.model.AyUserAddress">-->
         <!--</association>-->
 
-        <collection property="ayRoleList" javaType="ArrayList" column="id"
-                    ofType="com.ay.model.AyRole"
-                    fetchType="lazy"
-                    select="com.ay.dao.AyRoleDao.findByUserId">
-            <id property="id" column="id"/>
-            <result property="name" column="name"/>
-        </collection>
+        <!--<collection property="ayRoleList" javaType="ArrayList" column="id"-->
+                    <!--ofType="com.ay.model.AyRole"-->
+                    <!--fetchType="lazy"-->
+                    <!--select="com.ay.dao.AyRoleDao.findByUserId">-->
+            <!--<id property="id" column="id"/>-->
+            <!--<result property="name" column="name"/>-->
+        <!--</collection>-->
 
     </resultMap>
 
-    <select id="findById"  parameterType="String" resultMap="userMap">
+    <select id="findById" useCache="false"  parameterType="String" resultMap="userMap">
       SELECT * FROM ay_user
       WHERE id = #{id}
     </select>

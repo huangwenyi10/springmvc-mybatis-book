@@ -6,6 +6,7 @@ import com.ay.service.AyUserService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -33,13 +34,17 @@ public class AyUserServiceImpl implements AyUserService{
 //        return ayUserDao.countByName(name);
 //    }
 //
-//    public int insert(AyUser ayUser) {
-//        return ayUserDao.insert(ayUser);
-//    }
-//
-//    public int update(AyUser ayUser) {
-//        return ayUserDao.update(ayUser);
-//    }
+    public int insert(AyUser ayUser) {
+        return ayUserDao.insert(ayUser);
+    }
+
+    @Transactional
+    public int update(AyUser ayUser) {
+        int count = ayUserDao.update(ayUser);
+        String s = null;
+        s.split(",");
+        return count;
+    }
 //
 //    public int delete(int id) {
 //        return ayUserDao.delete(id);

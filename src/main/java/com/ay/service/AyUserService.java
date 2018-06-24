@@ -18,9 +18,9 @@ public interface AyUserService {
 //
 //    int countByName(String name);
 //
-//    int insert(AyUser ayUser);
+    int insert(AyUser ayUser);
 //
-//    int update(AyUser ayUser);
+    int update(AyUser ayUser);
 //
 //    int delete(int id);
 //

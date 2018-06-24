@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 全局配置参数，需要时再设置 -->
+    <settings>
+        <!-- 开启二级缓存  默认是不开启的-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--<properties></properties>-->
+
+    <!--<typeAliases></typeAliases>-->
+
+    <!--<typeHandlers></typeHandlers>-->
+
+    <!--<objectFactory type="" ></objectFactory>-->
+
+    <!--<plugins>-->
+        <!--<plugin interceptor=""></plugin>-->
+    <!--</plugins>-->
+
+    <!--<environments default="">-->
+        <!--<environment id="">-->
+            <!--<transactionManager type=""></transactionManager>-->
+            <!--<dataSource type=""></dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <!--<databaseIdProvider type=""></databaseIdProvider>-->
+
+    <!--<mappers></mappers>-->
+
+</configuration>
