@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ay.dao.MoodDao">
+    <cache-ref namespace="com.ay.dao.UserDao"/>
+    
+    <resultMap id="moodMap" type="com.ay.model.Mood">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="userId" column="user_id"/>
+        <result property="praiseNum" column="praise_num"/>
+        <result property="publishTime" column="publish_time"/>
+    </resultMap>
+
+    <sql id="table_column">
+        id,
+        content,
+        user_id,
+        praise_num,
+        publish_time
+    </sql>
+
+    <select id="findAll" resultMap="moodMap">
+        select
+        <include refid="table_column"/>
+        from mood
+    </select>
+
+    <select id="findById" resultMap="moodMap">
+        select
+        <include refid="table_column"/>
+        from mood
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <update id="update">
+        update mood
+        <set>
+            <if test="mood.content != null and mood.content != ''">
+                content = #{mood.content},
+            </if>
+            <if test="mood.praiseNum != null and mood.praiseNum != ''">
+                praise_num = #{mood.praiseNum},
+            </if>
+        </set>
+        WHERE id = #{mood.id}
+    </update>
+
+</mapper>

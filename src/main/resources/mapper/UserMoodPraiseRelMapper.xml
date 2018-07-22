@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ay.dao.UserMoodPraiseRelDao">
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.ay.model.UserMoodPraiseRel">
+        insert into user_mood_praise_rel (user_id, mood_id)
+        VALUE (#{userMoodPraiseRel.userId}, #{userMoodPraiseRel.moodId})
+    </insert>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+				        http://www.springframework.org/schema/jms
+				        http://www.springframework.org/schema/jms/spring-jms-4.0.xsd">
+    <bean id="connectionFactory"
+          class="org.springframework.jms.connection.CachingConnectionFactory">
+        <description>JMS连接工厂</description>
+        <property name="targetConnectionFactory">
+            <bean class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="${activemq_url}" />
+                <property name="userName" value="${activemq_username}" />
+                <property name="password" value="${activemq_password}" />
+            </bean>
+        </property>
+        <property name="sessionCacheSize" value="100" />
+    </bean>
+
+    <!-- Spring JmsTemplate 的消息生产者 start-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <description>队列模式模型</description>
+        <constructor-arg ref="connectionFactory" />
+        <property name="receiveTimeout" value="10000" />
+
+        <property name="pubSubDomain" value="false" />
+    </bean>
+
+    <!-- 消息消费者 start-->
+    <!-- 定义Queue监听器 -->
+    <jms:listener-container destination-type="queue"
+                            container-type="default" connection-factory="connectionFactory"
+                            acknowledge="auto">
+        <!-- 可写多个监听器 -->
+        <jms:listener destination="ay.queue.high.concurrency.praise"
+                      ref="moodConsumer"/>
+    </jms:listener-container>
+    <!-- 消息消费者 end -->
+</beans>

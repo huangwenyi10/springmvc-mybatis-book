@@ -19,6 +19,10 @@
 
     <slf4j.version>1.7.25</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
+
+    <spring.redis.version>1.6.0.RELEASE</spring.redis.version>
+    <jedis.version>2.7.2</jedis.version>
+    <commons.version>2.4.2</commons.version>
   </properties>
 
 
@@ -188,8 +192,56 @@
       <version>6.0.10.Final</version>
     </dependency>
 
-  </dependencies>
+    <!-- 集成redis -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>${spring.redis.version}</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+      <version>${commons.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>${jedis.version}</version>
+    </dependency>
+
+    <!-- active mq start -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-all</artifactId>
+      <version>5.11.2</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>spring-context</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-jms_1.1_spec</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>javax.jms-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <!-- active mq end -->
+
+  </dependencies>
 
   <build>
     <finalName>springmvc-mybatis-book</finalName>
