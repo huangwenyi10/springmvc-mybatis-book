@@ -15,6 +15,8 @@ public class SysUser implements Serializable{
     private String no;
     //职位
     private String position;
+    //离职原因
+    private String reason;
     //状态，0：删除 1：在职  2：离职
     private String status;
 
@@ -56,5 +58,13 @@ public class SysUser implements Serializable{
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

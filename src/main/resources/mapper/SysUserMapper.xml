@@ -9,6 +9,7 @@
         <result property="no" column="no"/>
         <result property="position" column="position"/>
         <result property="status" column="status"/>
+        <result property="reason" column="reason"/>
     </resultMap>
     <!-- sql代码块 -->
     <sql id="table_column">
@@ -16,7 +17,8 @@
         name,
         no,
         status,
-        position
+        position,
+        reason
     </sql>
 
     <select id="findAll" resultMap="userMap">
@@ -26,6 +28,13 @@
         where status != '0';
     </select>
 
+    <select id="findById" resultType="com.ay.model.SysUser">
+        select
+        <include refid="table_column"/>
+        from sys_user
+        where id = #{id};
+    </select>
+
     <insert id="save" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.ay.model.SysUser">
         <selectKey keyProperty="id" resultType="int" order="BEFORE">
@@ -33,6 +42,31 @@
         </selectKey>
         insert into sys_user(id, name ,no, status, position)
         value (#{id},#{name},#{no},#{status},#{position} )
+    </insert>
+
+    <insert id="update" parameterType="com.ay.model.SysUser">
+        update sys_user
+        <set>
+            name = #{user.name},
+            no = #{user.no},
+            status = #{user.status},
+            position = #{user.position},
+            reason = #{user.reason}
+        </set>
+        <where>
+            id = #{user.id}
+        </where>
+    </insert>
+
+    <insert id="updateStatus" parameterType="com.ay.model.SysUser">
+        update sys_user
+        <set>
+            status = #{user.status},
+            reason = #{user.reason}
+        </set>
+        <where>
+            id = #{user.id}
+        </where>
     </insert>
 
 </mapper>
