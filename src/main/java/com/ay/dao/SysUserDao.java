@@ -1,6 +1,7 @@
 package com.ay.dao;
 
 import com.ay.model.SysUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface SysUserDao {
     List<SysUser> findAll();
 
     void save(SysUser user);
+
+    SysUser findById(Integer id);
+
+    void update(@Param("user") SysUser user);
+
+    void updateStatus(@Param("user") SysUser user);
 }

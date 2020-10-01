@@ -14,4 +14,10 @@ public interface SysUserService {
     List<SysUser> findAll();
 
     boolean save(SysUserDTO user);
+
+    SysUser findById(Integer id);
+
+    boolean update(SysUserDTO user);
+
+    boolean updateStatus(SysUserDTO user);
 }

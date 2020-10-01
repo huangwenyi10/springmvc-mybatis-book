@@ -26,7 +26,6 @@
         <td>职位</td>
         <td><input id="position"/></td>
     </tr>
-
 </table>
 <div align="center">
     <button id="join">保存</button>
@@ -57,10 +56,7 @@
 
             }
         });
-
-
     });
-
 </script>
 </html>
 
