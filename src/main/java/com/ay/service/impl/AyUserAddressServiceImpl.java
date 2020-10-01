@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @create 2018/05/01
  **/
 @Service
-public class AyUserAddressServiceImpl implements AyUserAddressService{
+public class AyUserAddressServiceImpl implements AyUserAddressService {
 
     @Resource
     private AyUserAddressDao ayUserAddressDao;

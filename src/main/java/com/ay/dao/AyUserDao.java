@@ -4,6 +4,7 @@ import com.ay.model.AyUser;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +15,9 @@ public interface AyUserDao {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(AyUser ayUser);
 
-      AyUser findById(String id);
-//    @Select("SELECT * FROM ay_user")
+    AyUser findById(String id);
+
+    //    @Select("SELECT * FROM ay_user")
 //    List<AyUser> findAll();
 //    @Select("SELECT * FROM ay_user")
 //    @Results({
@@ -28,7 +30,7 @@ public interface AyUserDao {
 //    @Select("SELECT * FROM ay_user WHERE id = #{id}")
 //
 
-//    @Select("SELECT * FROM ay_user WHERE name = #{name}")
+    //    @Select("SELECT * FROM ay_user WHERE name = #{name}")
 //    List<AyUser> findByName(String name);
 //
 //    int countByName(String name);

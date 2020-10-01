@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 
 /**
  * 描述：日志类Handler
+ *
  * @author Ay
  * @create 2018/04/22
  **/
@@ -16,7 +17,7 @@ public class MyLoggerHandler implements InvocationHandler {
     //这里很关键
     private MyLogger myLogger = new MyLoggerImpl();
 
-    public MyLoggerHandler(Object obj){
+    public MyLoggerHandler(Object obj) {
         super();
         this.objOriginal = obj;
     }
@@ -26,7 +27,7 @@ public class MyLoggerHandler implements InvocationHandler {
         //日志类的方法
         myLogger.saveIntoMethodTime(method);
         //调用代理类方法
-        result = method.invoke(this.objOriginal ,args);
+        result = method.invoke(this.objOriginal, args);
         //日志类方法
         myLogger.saveOutMethodTime(method);
         return result;

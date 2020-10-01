@@ -22,7 +22,7 @@ public class MQTest extends BaseJunit4Test {
     private static Destination destination = new ActiveMQQueue("ay.queue.high.concurrency-praise");
 
     @Test
-    public void testMQ(){
+    public void testMQ() {
         MoodDTO mood = new MoodDTO();
         mood.setId("1");
         mood.setContent("aaaa");

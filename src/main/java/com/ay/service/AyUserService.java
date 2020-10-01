@@ -9,17 +9,20 @@ import java.util.Map;
 
 public interface AyUserService {
 
-      List<AyUser> findAll();
-//      List<AyUser> findAll(RowBounds rowBounds);
+    List<AyUser> findAll();
+
+    //      List<AyUser> findAll(RowBounds rowBounds);
 //
-      AyUser findById(String id);
-//
+    AyUser findById(String id);
+
+    //
 //    List<AyUser> findByName(String name);
 //
 //    int countByName(String name);
 //
     int insert(AyUser ayUser);
-//
+
+    //
     int update(AyUser ayUser);
 //
 //    int delete(int id);

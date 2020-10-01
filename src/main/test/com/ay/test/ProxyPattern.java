@@ -1,17 +1,21 @@
 package com.ay.test;
+
 /**
  * 描述：客户端类
+ *
  * @author Ay
  * @create 2018/04/22
  **/
-public class ProxyPattern{
+public class ProxyPattern {
     public static void main(String[] args) {
         Proxy proxy = new Proxy(new RealSubject());
         proxy.operation();
     }
 }
+
 /**
  * 描述：抽象主题类
+ *
  * @author Ay
  * @create 2018/04/22
  **/
@@ -21,25 +25,28 @@ abstract class Subject {
 
 /**
  * 描述：具体主题类
+ *
  * @author Ay
  * @create 2018/04/22
  **/
-class RealSubject extends Subject{
+class RealSubject extends Subject {
 
     void operation() {
         System.out.println("operation ......");
     }
 }
+
 /**
  * 描述：代理类
+ *
  * @author Ay
  * @create 2018/04/22
  **/
-class Proxy extends Subject{
+class Proxy extends Subject {
 
     private Subject subject;
 
-    public Proxy(Subject subject){
+    public Proxy(Subject subject) {
         this.subject = subject;
     }
 
@@ -52,11 +59,11 @@ class Proxy extends Subject{
         this.postOperation();
     }
 
-    void preOperation(){
+    void preOperation() {
         System.out.println("pre operation......");
     }
 
-    void postOperation(){
+    void postOperation() {
         System.out.println("post operation......");
     }
 }

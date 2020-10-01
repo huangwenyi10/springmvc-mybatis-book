@@ -13,21 +13,21 @@
         <description>JMS连接工厂</description>
         <property name="targetConnectionFactory">
             <bean class="org.apache.activemq.spring.ActiveMQConnectionFactory">
-                <property name="brokerURL" value="${activemq_url}" />
-                <property name="userName" value="${activemq_username}" />
-                <property name="password" value="${activemq_password}" />
+                <property name="brokerURL" value="${activemq_url}"/>
+                <property name="userName" value="${activemq_username}"/>
+                <property name="password" value="${activemq_password}"/>
             </bean>
         </property>
-        <property name="sessionCacheSize" value="100" />
+        <property name="sessionCacheSize" value="100"/>
     </bean>
 
     <!-- Spring JmsTemplate 的消息生产者 start-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <description>队列模式模型</description>
-        <constructor-arg ref="connectionFactory" />
-        <property name="receiveTimeout" value="10000" />
+        <constructor-arg ref="connectionFactory"/>
+        <property name="receiveTimeout" value="10000"/>
 
-        <property name="pubSubDomain" value="false" />
+        <property name="pubSubDomain" value="false"/>
     </bean>
 
     <!-- 消息消费者 start-->

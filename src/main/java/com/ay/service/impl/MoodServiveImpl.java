@@ -14,6 +14,7 @@ import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
 import javax.annotation.Resource;
 import javax.jms.Destination;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
 
 /**
  * 描述：说说服务类
+ *
  * @author Ay
  * @date 2018/1/6.
  */
@@ -59,10 +61,10 @@ public class MoodServiveImpl implements MoodService {
         return converModel2DTO(moodList);
     }
 
-    private List<MoodDTO> converModel2DTO(List<Mood> moodList){
-        if(CollectionUtils.isEmpty(moodList)) return Collections.EMPTY_LIST;
+    private List<MoodDTO> converModel2DTO(List<Mood> moodList) {
+        if (CollectionUtils.isEmpty(moodList)) return Collections.EMPTY_LIST;
         List<MoodDTO> moodDTOList = new ArrayList<MoodDTO>();
-        for(Mood mood:moodList){
+        for (Mood mood : moodList) {
             MoodDTO moodDTO = new MoodDTO();
             moodDTO.setId(mood.getId());
             moodDTO.setContent(mood.getContent());
@@ -106,17 +108,16 @@ public class MoodServiveImpl implements MoodService {
     private static final String PRAISE_HASH_KEY = "springmv.mybatis.boot.mood.id.list.key";
 
 
-
     @Resource
     private UserService userService;
 
     public List<MoodDTO> findAllForRedis() {
         List<Mood> moodList = moodDao.findAll();
-        if(CollectionUtils.isEmpty(moodList)){
+        if (CollectionUtils.isEmpty(moodList)) {
             return Collections.EMPTY_LIST;
         }
         List<MoodDTO> moodDTOList = new ArrayList<MoodDTO>();
-        for(Mood mood: moodList){
+        for (Mood mood : moodList) {
             MoodDTO moodDTO = new MoodDTO();
             moodDTO.setId(mood.getId());
             moodDTO.setUserId(mood.getUserId());
@@ -125,7 +126,7 @@ public class MoodServiveImpl implements MoodService {
             moodDTO.setPublishTime(mood.getPublishTime());
             moodDTO.setContent(mood.getContent());
             //通过userID查询用户
-            User user =  userService.find(mood.getUserId());
+            User user = userService.find(mood.getUserId());
             //用户名
             moodDTO.setUserName(user.getName());
             //账户

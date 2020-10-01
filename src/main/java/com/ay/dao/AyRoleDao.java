@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AyRoleDao {
 
-      AyRole findById(String id);
+    AyRole findById(String id);
 //    @Select("SELECT * FROM ay_user")
 //    List<AyUser> findAll();
 //    @Select("SELECT * FROM ay_user")
@@ -19,7 +19,7 @@ public interface AyRoleDao {
 //    List<AyUser> findAll();
 
 //    @Select("SELECT * FROM ay_user WHERE id = #{id}")
-      //AyRole findById(String id);
+    //AyRole findById(String id);
 //
 //    @Select("SELECT * FROM ay_user WHERE name = #{name}")
 //    List<AyUser> findByName(String name);

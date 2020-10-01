@@ -1,13 +1,13 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
-        pageEncoding="UTF-8" isELIgnored="false"%>
+        pageEncoding="UTF-8" isELIgnored="false" %>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form method="post"  action="/user/insert" >
+<form method="post" action="/user/insert">
     <table>
         <tr>
             <td>姓名：</td>

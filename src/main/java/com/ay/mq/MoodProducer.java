@@ -1,4 +1,5 @@
 package com.ay.mq;
+
 import com.ay.dto.MoodDTO;
 import com.ay.model.Mood;
 import org.apache.log4j.Logger;
@@ -6,11 +7,13 @@ import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
 /**
  * 生产者jmsTemplate
+ *
  * @author Ay
  * @date 2017/11/30
  */

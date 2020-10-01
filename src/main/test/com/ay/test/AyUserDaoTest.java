@@ -1,4 +1,5 @@
 package com.ay.test;
+
 import com.ay.dao.AyUserDao;
 import com.ay.model.AyUser;
 import com.github.pagehelper.PageHelper;
@@ -16,10 +17,11 @@ import java.util.List;
 
 /**
  * 描述：用户DAO测试类
+ *
  * @author Ay
  * @create 2018/05/04
  **/
-public class AyUserDaoTest extends BaseJunit4Test{
+public class AyUserDaoTest extends BaseJunit4Test {
 
     @Resource
     private AyUserDao ayUserDao;
@@ -33,7 +35,7 @@ public class AyUserDaoTest extends BaseJunit4Test{
 //    }
 
     @Test
-    public void testPageHelper(){
+    public void testPageHelper() {
         //startPage(第几页, 多少条数据)
         PageHelper.startPage(0, 1);
         //查询所有用户
@@ -46,13 +48,14 @@ public class AyUserDaoTest extends BaseJunit4Test{
     private SqlSessionFactoryBean sqlSessionFactoryBean;
 
     @Test
-    public void testSessionCache() throws Exception{ SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
+    public void testSessionCache() throws Exception {
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         SqlSession sqlSession = sqlSessionFactory.openSession();
         AyUserDao ayUserDao = sqlSession.getMapper(AyUserDao.class);
         //第一次查询
         AyUser ayUser = ayUserDao.findById("1");
         System.out.println("name: " + ayUser.getName()
-                      + "  password:" + ayUser.getPassword());
+                + "  password:" + ayUser.getPassword());
 
         //执行commit操作（如：更新、插入、删除等操作）
         AyUser user = new AyUser();
@@ -64,7 +67,8 @@ public class AyUserDaoTest extends BaseJunit4Test{
         AyUser ayUser2 = ayUserDao.findById("1");
         System.out.println("name: " + ayUser2.getName()
                 + "  password:" + ayUser2.getPassword());
-        sqlSession.close();;
+        sqlSession.close();
+        ;
     }
 
 }

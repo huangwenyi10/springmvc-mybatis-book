@@ -1,4 +1,5 @@
 package com.ay.model;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
@@ -8,10 +9,11 @@ import java.util.List;
 
 /**
  * 用户实体
+ *
  * @author Ay
- * @date  2018/04/02
+ * @date 2018/04/02
  */
-public class AyUser implements Serializable{
+public class AyUser implements Serializable {
 
     private Integer id;
     @NotBlank(message = "name不能为空")

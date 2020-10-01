@@ -1,10 +1,12 @@
 package com.ay.dto;
+
 import java.io.Serializable;
+
 /**
  * 用户DTO
  * Created by Ay on 2020/3/22.
  */
-public class SysUserDTO implements Serializable{
+public class SysUserDTO implements Serializable {
 
     //主键
     private Integer id;

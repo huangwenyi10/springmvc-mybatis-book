@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans    xmlns="http://www.springframework.org/schema/beans"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns:p="http://www.springframework.org/schema/p"
-          xmlns:tx="http://www.springframework.org/schema/tx"
-          xmlns:context="http://www.springframework.org/schema/context"
-          xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
       http://www.springframework.org/schema/tx
@@ -14,7 +14,7 @@
 
     <context:property-placeholder location="classpath:*.properties"/>
     <!--设置数据池-->
-    <bean id="poolConfig"  class="redis.clients.jedis.JedisPoolConfig">
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}"></property>
         <property name="minIdle" value="${redis.minIdle}"></property>
         <property name="maxTotal" value="${redis.maxTotal}"></property>
@@ -30,6 +30,6 @@
     </bean>
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
-          p:connection-factory-ref="redisConnectionFactory" >
+          p:connection-factory-ref="redisConnectionFactory">
     </bean>
 </beans>

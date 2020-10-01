@@ -4,12 +4,12 @@
 <mapper namespace="com.ay.dao.AySchoolDao">
 
     <resultMap id="schoolMap" type="com.ay.model.AySchool">
-        <id property="id" column="id" />
+        <id property="id" column="id"/>
         <result property="name" column="name"/>
         <collection property="students" javaType="ArrayList" column="id"
                     ofType="com.ay.model.AyStudent"
                     fetchType="lazy"
-                     select="com.ay.dao.AyStudentDao.findBySchoolId">
+                    select="com.ay.dao.AyStudentDao.findBySchoolId">
             <id property="id" column="id"/>
             <result property="name" column="name"/>
             <result property="age" column="age"/>

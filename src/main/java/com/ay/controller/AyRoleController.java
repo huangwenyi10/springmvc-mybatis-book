@@ -1,4 +1,5 @@
 package com.ay.controller;
+
 import com.ay.model.AyRole;
 import com.ay.model.AyUser;
 import com.ay.service.AyRoleService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
- *@author Ay
+ * @author Ay
  * @date 2018/04/02
  */
 @Controller
@@ -22,7 +23,7 @@ public class AyRoleController {
     private AyRoleService ayRoleService;
 
     @GetMapping("/findById")
-    public String findById(Model model){
+    public String findById(Model model) {
         AyRole ayRole = ayRoleService.findById("1");
         return "success";
     }

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class AyUserServiceImpl implements AyUserService{
+public class AyUserServiceImpl implements AyUserService {
 
     @Resource
     private AyUserDao ayUserDao;
@@ -21,11 +21,13 @@ public class AyUserServiceImpl implements AyUserService{
     public List<AyUser> findAll() {
         return ayUserDao.findAll();
     }
-//
+
+    //
     public AyUser findById(String id) {
         return ayUserDao.findById(id);
     }
-//
+
+    //
 //    public List<AyUser> findByName(String name) {
 //        return ayUserDao.findByName(name);
 //    }

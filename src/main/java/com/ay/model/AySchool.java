@@ -1,8 +1,11 @@
 package com.ay.model;
+
 import java.io.Serializable;
 import java.util.List;
+
 /**
  * 描述：学校实体
+ *
  * @author Ay
  * @create 2018/05/01
  **/

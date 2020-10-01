@@ -7,7 +7,7 @@ import java.util.Date;
  * 描述：说说
  * Created by Ay on 2017/9/16.
  */
-public class Mood implements Serializable{
+public class Mood implements Serializable {
     /**
      * 主键
      */

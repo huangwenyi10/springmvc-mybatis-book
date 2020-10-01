@@ -24,7 +24,7 @@
 
     <select id="findByUserId" parameterType="Integer" resultType="com.ay.model.AyRole">
         SELECT * FROM ay_role WHERE id in(
-          select role_id from ay_user_role_rel where user_id = #{userId}
+        select role_id from ay_user_role_rel where user_id = #{userId}
         )
     </select>
 

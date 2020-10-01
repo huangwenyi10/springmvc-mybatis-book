@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ay.dao.MoodDao">
     <cache-ref namespace="com.ay.dao.UserDao"/>
-    
+
     <resultMap id="moodMap" type="com.ay.model.Mood">
         <id property="id" column="id"/>
         <result property="content" column="content"/>

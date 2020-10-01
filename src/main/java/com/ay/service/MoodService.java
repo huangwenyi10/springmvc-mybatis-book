@@ -8,12 +8,14 @@ import java.util.List;
 
 /**
  * 描述：说说接口
+ *
  * @author Ay
  * @date 2018/1/6.
  */
 public interface MoodService {
     //传统查询
     List<MoodDTO> findAll();
+
     //传统点赞
     boolean praiseMood(String userId, String moodId);
 

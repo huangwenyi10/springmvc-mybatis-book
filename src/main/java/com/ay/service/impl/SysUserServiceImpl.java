@@ -1,9 +1,11 @@
 package com.ay.service.impl;
+
 import com.ay.dao.SysUserDao;
 import com.ay.dto.SysUserDTO;
 import com.ay.model.SysUser;
 import com.ay.service.SysUserService;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * Created by Ay on 2020/3/22.
  */
 @Service
-public class SysUserServiceImpl implements SysUserService{
+public class SysUserServiceImpl implements SysUserService {
     @Resource
     private SysUserDao sysUserDao;
 
@@ -26,7 +28,7 @@ public class SysUserServiceImpl implements SysUserService{
         return true;
     }
 
-    public SysUser convert(SysUserDTO user){
+    public SysUser convert(SysUserDTO user) {
         SysUser sysUser = new SysUser();
         sysUser.setName(user.getName());
         sysUser.setNo(user.getNo());

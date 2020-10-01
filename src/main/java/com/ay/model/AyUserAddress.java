@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 /**
  * 描述：用户地址实体
+ *
  * @author Ay
  * @create 2018/05/01
  **/
-public class AyUserAddress  implements Serializable {
+public class AyUserAddress implements Serializable {
 
     private Integer id;
     private String name;

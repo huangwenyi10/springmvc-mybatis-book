@@ -10,7 +10,7 @@
         <!-- 开启二级缓存  默认是不开启的-->
         <setting name="cacheEnabled" value="true"/>
         <!-- 通过日志记录显示 mybatis的执行过程 -->
-        <setting name="logImpl" value="log4j" />
+        <setting name="logImpl" value="log4j"/>
         <!-- lazyLoadingEnabled设置为懒加载 -->
         <setting name="lazyLoadingEnabled" value="true"/>
         <!-- aggressiveLazyLoading主动加载为false -->
@@ -26,14 +26,14 @@
     <!--<objectFactory type="" ></objectFactory>-->
 
     <!--<plugins>-->
-        <!--<plugin interceptor=""></plugin>-->
+    <!--<plugin interceptor=""></plugin>-->
     <!--</plugins>-->
 
     <!--<environments default="">-->
-        <!--<environment id="">-->
-            <!--<transactionManager type=""></transactionManager>-->
-            <!--<dataSource type=""></dataSource>-->
-        <!--</environment>-->
+    <!--<environment id="">-->
+    <!--<transactionManager type=""></transactionManager>-->
+    <!--<dataSource type=""></dataSource>-->
+    <!--</environment>-->
     <!--</environments>-->
 
     <!--<databaseIdProvider type=""></databaseIdProvider>-->

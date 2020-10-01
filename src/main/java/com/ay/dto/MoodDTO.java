@@ -1,10 +1,12 @@
 package com.ay.dto;
+
 import com.ay.model.Mood;
 
 import java.io.Serializable;
 
 /**
  * 描述：说说DTO
+ *
  * @author Ay
  * @date 2018/1/6.
  */

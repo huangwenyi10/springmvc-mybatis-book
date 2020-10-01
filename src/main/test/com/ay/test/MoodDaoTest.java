@@ -10,16 +10,17 @@ import java.util.List;
 
 /**
  * 描述：用户DAO测试类
+ *
  * @author Ay
  * @create 2018/05/04
  **/
-public class MoodDaoTest extends BaseJunit4Test{
+public class MoodDaoTest extends BaseJunit4Test {
 
     @Resource
     private MoodDao moodDao;
 
     @Test
-    public void testFindAll(){
+    public void testFindAll() {
         List<Mood> moodList = moodDao.findAll();
         System.out.println(moodList.size());
     }

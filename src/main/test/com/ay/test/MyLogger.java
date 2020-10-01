@@ -1,8 +1,10 @@
 package com.ay.test;
+
 import java.lang.reflect.Method;
 
 /**
  * 描述：日志类接口
+ *
  * @author Ay
  * @create 2018/04/22
  **/

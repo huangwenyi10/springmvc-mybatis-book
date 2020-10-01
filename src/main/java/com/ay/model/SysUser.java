@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 员工表
  * Created by Ay on 2020/3/22.
  */
-public class SysUser implements Serializable{
+public class SysUser implements Serializable {
     //主键
     private Integer id;
     //用户名

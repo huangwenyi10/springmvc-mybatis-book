@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class AyRoleServiceImpl implements AyRoleService{
+public class AyRoleServiceImpl implements AyRoleService {
 
     @Resource
     private AyRoleDao ayRoleDao;

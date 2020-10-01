@@ -15,7 +15,7 @@ public interface MoodDao {
 
     List<Mood> findAll();
 
-    boolean update(@Param("mood")Mood mood);
+    boolean update(@Param("mood") Mood mood);
 
     Mood findById(String id);
 }

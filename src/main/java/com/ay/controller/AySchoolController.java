@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * 描述：地址控制层
+ *
  * @author Ay
  * @create 2018/05/01
  **/
@@ -24,7 +25,7 @@ public class AySchoolController {
     private AySchoolService aySchoolService;
 
     @GetMapping("/findById")
-    public String findById(Model model){
+    public String findById(Model model) {
         AySchool aySchool = aySchoolService.findById(1);
         return "success";
     }

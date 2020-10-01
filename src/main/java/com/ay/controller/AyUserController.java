@@ -1,4 +1,5 @@
 package com.ay.controller;
+
 import com.ay.model.AyUser;
 import com.ay.service.AyUserService;
 import com.ay.validator.AyUserValidator;
@@ -15,7 +16,8 @@ import java.util.List;
 
 /**
  * 用户控制层
- *@author Ay
+ *
+ * @author Ay
  * @date 2018/04/02
  */
 @Controller
@@ -23,13 +25,13 @@ import java.util.List;
 public class AyUserController {
 
     @RequestMapping("/save")
-    public String save(){
+    public String save() {
         return "saveUser";
     }
 
     @PostMapping("/insert")
-    public String insert(@Valid @ModelAttribute AyUser ayUser, BindingResult result){
-        if(result.hasErrors()){
+    public String insert(@Valid @ModelAttribute AyUser ayUser, BindingResult result) {
+        if (result.hasErrors()) {
             return "error";
         }
         int count = ayUserService.insert(ayUser);
@@ -221,7 +223,6 @@ public class AyUserController {
 //    }
 
 
-
 //    @RequestMapping("/cookieValue")
 //    public String handle(@CookieValue("JSESSIONID") String cookie) {
 //        //...
@@ -343,7 +344,6 @@ public class AyUserController {
 //    }
 
 
-
 //    @GetMapping("/findById")
 //    public String findById(Model model){
 //        AyUser ayUser = ayUserService.findById("1");
@@ -388,7 +388,7 @@ public class AyUserController {
 //        return "success";
 //    }
 
-//    @GetMapping("/insert")
+    //    @GetMapping("/insert")
 ////    public String insert(Model model){
 ////        AyUser ayUser = new AyUser();
 ////        //ayUser.setId(3);
@@ -399,7 +399,7 @@ public class AyUserController {
 ////    }
 ////
     @GetMapping("/update")
-    public String update(Model model){
+    public String update(Model model) {
         AyUser ayUser = new AyUser();
         ayUser.setId(1);
         ayUser.setName("aaaa");
